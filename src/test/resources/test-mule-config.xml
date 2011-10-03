@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesource.org/schema/mule/core/2.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vm="http://www.mulesource.org/schema/mule/vm/2.2"
+    xmlns:salesforce="http://www.mulesource.org/schema/mule/salesforce/2.2"
+    xsi:schemaLocation="
+          http://www.mulesource.org/schema/mule/core/2.2 http://www.mulesource.org/schema/mule/core/2.2/mule.xsd
+          http://www.mulesource.org/schema/mule/vm/2.2 http://www.mulesource.org/schema/mule/vm/2.2/mule-vm.xsd
+          http://www.mulesource.org/schema/mule/salesforce/2.2 http://www.mulesource.org/schema/mule/salesforce/2.2/mule-salesforce.xsd">
+
+    <salesforce:connector name="salesforceConnector">
+
+
+    </salesforce:connector>
+
+    <model name="salesforceFunctionalTestModel">
+
+        <service name="salesforceServiceLogin">
+            <inbound>
+                <inbound-endpoint address="vm://test.login"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://login"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeSObjects">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeSObjects"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://describeSObjects"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeGlobal">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeGlobal"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://describeGlobal"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeLayout">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeLayout"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://describeLayout"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeSoftphoneLayout">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeSoftphoneLayout"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint
+                        address="salesforce://describeSoftphoneLayout"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeTabs">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeTabs"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://describeTabs"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceCreate">
+            <inbound>
+                <inbound-endpoint address="vm://test.create"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://create"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceUpdate">
+            <inbound>
+                <inbound-endpoint address="vm://test.update"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://update"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceUpsert">
+            <inbound>
+                <inbound-endpoint address="vm://test.upsert"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://upsert"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceMerge">
+            <inbound>
+                <inbound-endpoint address="vm://test.merge"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://merge"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDelete">
+            <inbound>
+                <inbound-endpoint address="vm://test.delete"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://delete"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceUndelete">
+            <inbound>
+                <inbound-endpoint address="vm://test.undelete"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://undelete"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceEmptyRecycleBin">
+            <inbound>
+                <inbound-endpoint address="vm://test.emptyRecycleBin"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://emptyRecycleBin"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceRetrieve">
+            <inbound>
+                <inbound-endpoint address="vm://test.retrieve"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://retrieve"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceProcess">
+            <inbound>
+                <inbound-endpoint address="vm://test.process"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://process"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceConvertLead">
+            <inbound>
+                <inbound-endpoint address="vm://test.convertLead"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://convertLead"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceLogout">
+            <inbound>
+                <inbound-endpoint address="vm://test.logout"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://logout"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceInvalidateSessions">
+            <inbound>
+                <inbound-endpoint address="vm://test.invalidateSessions"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://invalidateSessions"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceGetDeleted">
+            <inbound>
+                <inbound-endpoint address="vm://test.getDeleted"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://getDeleted"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceGetUpdated">
+            <inbound>
+                <inbound-endpoint address="vm://test.getUpdated"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://getUpdated"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceQuery">
+            <inbound>
+                <inbound-endpoint address="vm://test.query"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://query"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceQueryAll">
+            <inbound>
+                <inbound-endpoint address="vm://test.queryAll"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://queryAll"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceQueryMore">
+            <inbound>
+                <inbound-endpoint address="vm://test.queryMore"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://queryMore"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceSearch">
+            <inbound>
+                <inbound-endpoint address="vm://test.search"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://search"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceGetServerTimestamp">
+            <inbound>
+                <inbound-endpoint address="vm://test.getServerTimestamp"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://getServerTimestamp"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceSetPassword">
+            <inbound>
+                <inbound-endpoint address="vm://test.setPassword"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://setPassword"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceResetPassword">
+            <inbound>
+                <inbound-endpoint address="vm://test.resetPassword"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://resetPassword"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceGetUserInfo">
+            <inbound>
+                <inbound-endpoint address="vm://test.getUserInfo"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://getUserInfo"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceSendEmail">
+            <inbound>
+                <inbound-endpoint address="vm://test.sendEmail"
+                    synchronous="true" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://sendEmail"
+                        synchronous="true" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+    </model>
+
+
+</mule>
