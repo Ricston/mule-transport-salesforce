@@ -245,6 +245,12 @@
 			<version>3.8.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.safehaus.jug</groupId>
+			<artifactId>jug</artifactId>
+			<version>2.0.0-osgi</version>
+			<classifier>asl</classifier>
+		</dependency>
 	</dependencies>
 
 	<!-- Mule Forge Configuration -->
@@ -290,26 +296,15 @@
 			<layout>default</layout>
 		</repository>
 		<repository>
-			<id>muleforge-dist</id>
-			<url>http://dist.muleforge.org/mule-transport-sfdc/dependencies/maven2/</url>
-		</repository>
-		<repository>
 			<id>codehaus-repo</id>
 			<name>Codehaus Repository</name>
 			<url>http://dist.codehaus.org/mule/dependencies/maven2</url>
 			<layout>default</layout>
 		</repository>
 		<repository>
-			<!-- local repository for this forge project. Users can upload dependencies 
-				here when the artifact is not available on any other repository. Its the 
-				users' responsibility to make sure that no licenses are violated by uploading 
-				dependencies to this location -->
 			<id>salesforce-deps</id>
 			<name>Salesforce Dependencies</name>
-			<url>http://dist.muleforge.org/mule-transport-salesforce/dependencies/maven2</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
+			<url>http://dist.muleforge.org/mule-transport-sfdc/dependencies/maven2</url>
 		</repository>
 	</repositories>
 
