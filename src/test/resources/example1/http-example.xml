@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+    xmlns:https="http://www.mulesoft.org/schema/mule/https"
+    xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+    xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+    xsi:schemaLocation="
+          http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/3.0/mule-http.xsd
+          http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/3.0/mule-https.xsd
+          http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.0/mule.xsd
+          http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.0/mule-vm.xsd
+          http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/3.0/mule-salesforce.xsd">
+
+    <custom-transformer name="StreamToUserInput"
+        class="org.mule.transport.salesforce.transformers.StreamToUserInput" />
+    <custom-transformer name="SObjectsToHtml"
+        class="org.mule.transport.salesforce.transformers.SObjectsToHtml" />
+
+    <message-properties-transformer name="addContentType">
+        <add-message-property key="Content-Type"
+            value="text/html" />
+    </message-properties-transformer>
+
+    <model name="salesforceHttpExample">
+        <service name="RouteInput">
+            <inbound>
+                <inbound-endpoint address="http://localhost:8081/getcontacts"
+                    transformer-refs="StreamToUserInput"
+                    responseTransformer-refs="SObjectsToHtml addContentType"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <component
+                class="org.mule.transport.salesforce.example.HttpExampleInvoker">
+                <binding
+                    interface="org.mule.transport.salesforce.example.IHttpExample"
+                    method="login">
+                    <vm:outbound-endpoint address="vm://ToLoginService"
+                        exchange-pattern="request-response" />
+                </binding>
+                <binding
+                    interface="org.mule.transport.salesforce.example.IHttpExample"
+                    method="query">
+                    <vm:outbound-endpoint address="vm://ToQueryService"
+                        exchange-pattern="request-response" />
+                </binding>
+            </component>
+
+        </service>
+        
+        
+
+        <service name="LoginService">
+            <inbound>
+                <vm:inbound-endpoint address="vm://ToLoginService" exchange-pattern="request-response"/>
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://login"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="QueryService">
+            <inbound>
+                <vm:inbound-endpoint address="vm://ToQueryService" exchange-pattern="request-response"/>
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://query"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+    </model>
+
+
+</mule>

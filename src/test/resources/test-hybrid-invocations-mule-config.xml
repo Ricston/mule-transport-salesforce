@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+    xsi:schemaLocation="
+          http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.0/mule.xsd
+          http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.0/mule-vm.xsd">
+
+    <model name="salesforceHybridInvocationsTestModel">
+
+        <service name="sfLoginQueryService">
+            <inbound>
+                <inbound-endpoint address="vm://test.login.query"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint
+                        address="salesforce://login(g1, g2);*query(g3, r1);"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="sfLoginQueryLogoutService">
+            <inbound>
+                <inbound-endpoint address="vm://test.login.query.logout"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint
+                        address="salesforce://login(g1, g2);*query(g3, r1);
+    					*logout(r1);"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="sfLoginCreateQueryDeleteService">
+            <inbound>
+                <inbound-endpoint address="vm://test.login.create.query.delete"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint
+                        address="salesforce://login(g1, g2);*create(g3,r1);*query(g4, r1);
+    				*delete(r3,r1);"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+    </model>
+
+</mule>

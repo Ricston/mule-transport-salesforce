@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+    xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+    xsi:schemaLocation="
+          http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.0/mule.xsd
+          http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.0/mule-vm.xsd
+          http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/3.0/mule-salesforce.xsd">
+
+    <salesforce:connector name="salesforceConnector">
+
+
+    </salesforce:connector>
+
+    <model name="salesforceFunctionalTestModel">
+
+        <service name="salesforceServiceLogin">
+            <inbound>
+                <inbound-endpoint address="vm://test.login"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://login"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeSObjects">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeSObjects"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://describeSObjects"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeGlobal">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeGlobal"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://describeGlobal"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeLayout">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeLayout"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://describeLayout"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeSoftphoneLayout">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeSoftphoneLayout"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint
+                        address="salesforce://describeSoftphoneLayout"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDescribeTabs">
+            <inbound>
+                <inbound-endpoint address="vm://test.describeTabs"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://describeTabs"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceCreate">
+            <inbound>
+                <inbound-endpoint address="vm://test.create"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://create"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceUpdate">
+            <inbound>
+                <inbound-endpoint address="vm://test.update"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://update"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceUpsert">
+            <inbound>
+                <inbound-endpoint address="vm://test.upsert"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://upsert"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceMerge">
+            <inbound>
+                <inbound-endpoint address="vm://test.merge"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://merge"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceDelete">
+            <inbound>
+                <inbound-endpoint address="vm://test.delete"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://delete"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceUndelete">
+            <inbound>
+                <inbound-endpoint address="vm://test.undelete"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://undelete"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceEmptyRecycleBin">
+            <inbound>
+                <inbound-endpoint address="vm://test.emptyRecycleBin"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://emptyRecycleBin"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceRetrieve">
+            <inbound>
+                <inbound-endpoint address="vm://test.retrieve"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://retrieve"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceProcess">
+            <inbound>
+                <inbound-endpoint address="vm://test.process"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://process"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceConvertLead">
+            <inbound>
+                <inbound-endpoint address="vm://test.convertLead"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://convertLead"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceLogout">
+            <inbound>
+                <inbound-endpoint address="vm://test.logout"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://logout"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceInvalidateSessions">
+            <inbound>
+                <inbound-endpoint address="vm://test.invalidateSessions"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://invalidateSessions"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceGetDeleted">
+            <inbound>
+                <inbound-endpoint address="vm://test.getDeleted"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://getDeleted"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceGetUpdated">
+            <inbound>
+                <inbound-endpoint address="vm://test.getUpdated"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://getUpdated"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceQuery">
+            <inbound>
+                <inbound-endpoint address="vm://test.query"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://query"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceQueryAll">
+            <inbound>
+                <inbound-endpoint address="vm://test.queryAll"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://queryAll"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceQueryMore">
+            <inbound>
+                <inbound-endpoint address="vm://test.queryMore"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://queryMore"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceSearch">
+            <inbound>
+                <inbound-endpoint address="vm://test.search"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://search"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceGetServerTimestamp">
+            <inbound>
+                <inbound-endpoint address="vm://test.getServerTimestamp"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://getServerTimestamp"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceSetPassword">
+            <inbound>
+                <inbound-endpoint address="vm://test.setPassword"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://setPassword"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceResetPassword">
+            <inbound>
+                <inbound-endpoint address="vm://test.resetPassword"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://resetPassword"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceGetUserInfo">
+            <inbound>
+                <inbound-endpoint address="vm://test.getUserInfo"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://getUserInfo"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="salesforceServiceSendEmail">
+            <inbound>
+                <inbound-endpoint address="vm://test.sendEmail"
+                    exchange-pattern="request-response" />
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <outbound-endpoint address="salesforce://sendEmail"
+                        exchange-pattern="request-response" />
+                </pass-through-router>
+            </outbound>
+        </service>
+
+    </model>
+
+
+</mule>
